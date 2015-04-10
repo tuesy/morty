@@ -14,6 +14,7 @@ gem 'thin'
 gem 'pg'
 gem 'newrelic_rpm'
 gem 'faraday'
+gem 'twitter-bootstrap-rails'
 
 group :production do
   gem 'rails_12factor'

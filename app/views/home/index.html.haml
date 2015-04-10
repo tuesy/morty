@@ -1,4 +1,9 @@
-= form_tag '/estimate' do
-  = text_field_tag 'annualincome'
-  = text_field_tag 'downpayment'
-  = submit_tag 'Estimate!'
+.well
+  = form_tag '/estimate', class: 'form-inline' do
+    If I make $
+    = text_field_tag 'annualincome', nil, class: 'input-small', size: 8
+    a year and I have
+    $
+    = text_field_tag 'downpayment', nil, class: 'input-small', size: 8
+    for the down payment
+    = submit_tag 'Estimate!', class: 'btn btn-success'

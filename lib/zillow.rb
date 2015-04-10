@@ -53,7 +53,10 @@ class Zillow
     # estimate(10000, 50000)
     # => 340000
     def estimate(down_payment, annual_income, options={})
+      down_payment = down_payment.gsub(',', '').strip
+      annual_income = annual_income.gsub(',', '').strip
       hash = self.calculate_affordability(down_payment, 0, annualincome: annual_income)
+      return unless hash && hash['affordabilityAmount']
       rounded = hash['affordabilityAmount'].to_i.round(-4) # round to nearist 10k
       rounded < 10000 ? 10000 : rounded
     end

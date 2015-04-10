@@ -23,16 +23,16 @@ describe Zillow, '.estimate' do
   end
 
   it "should round the affordability amount" do
-    expect(Zillow.estimate(10000, 50000)).to eq(340000)
+    expect(Zillow.estimate('10000', '50000')).to eq(340000)
   end
 
   it "should handle small affordability amounts" do
     allow(Zillow).to receive(:calculate_affordability){@json.merge('affordabilityAmount' => '15000')}
-    expect(Zillow.estimate(10000, 50000)).to eq(20000)
+    expect(Zillow.estimate('10000', '50000')).to eq(20000)
   end
 
   it "should have a 10k minimum" do
     allow(Zillow).to receive(:calculate_affordability){@json.merge('affordabilityAmount' => '400')}
-    expect(Zillow.estimate(10000, 50000)).to eq(10000)
+    expect(Zillow.estimate('10000', '50000')).to eq(10000)
   end
 end
