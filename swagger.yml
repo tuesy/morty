@@ -1,0 +1,36 @@
+# this is an example of the Uber API
+# as a demonstration of an API spec in YAML
+swagger: '2.0'
+info:
+  title: Morty API
+  description: tools for buying a home
+  version: "1.0.0"
+# the domain of the service
+host: morty.mankindforward.com
+# array of all schemes that your API supports
+schemes:
+  - http
+# will be prefixed to all paths
+basePath: /api
+produces:
+  - application/json
+paths:
+  /estimates:
+    post:
+      summary: get an estimate of how an expensive a house you can afford
+      parameters:
+        - name: annualincome
+          required: true
+          type: number
+          in: query
+          description: e.g. 50000
+        - name: downpayment
+          required: true
+          type: number
+          in: query
+          description: e.g. 10000
+      responses:
+        201:
+          description: a hash with an integer price
+        422:
+          description: an error occurred
