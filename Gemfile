@@ -25,10 +25,12 @@ group :development, :test do
   gem 'spring'
   gem 'guard-livereload', require: false
   gem 'guard-rails'
+  gem 'guard-rspec'
+  gem 'guard-cucumber'
   gem "rspec", "~> 3.0.0"
   gem 'rspec-rails', '~> 3.0.0'
   gem 'factory_girl_rails', "~> 4.0"
   gem 'database_cleaner'
-  gem 'cucumber-rails', require: false
+  gem 'cucumber-rails-training-wheels', require: false
 end
 

@@ -30,11 +30,7 @@ class Zillow
       return unless down && debts
       return unless options[:annualincome] || options[:monthlypayment]
 
-      conn = Faraday.new(url: BASE_URL) do |x|
-        x.request  :url_encoded             # form-encode POST params
-        x.response :logger                  # log requests to STDOUT
-        x.adapter  Faraday.default_adapter  # make requests with Net::HTTP
-      end
+      conn = Faraday.new(url: BASE_URL)
 
       params = {
         'zws-id' => ENV['ZILLOW_ZWSID'],
@@ -51,6 +47,15 @@ class Zillow
       else
         # TODO: handle the unthinkable
       end
+    end
+
+    # estimate what you can afford based on your available downpayment and annual income
+    # estimate(10000, 50000)
+    # => 340000
+    def estimate(down_payment, annual_income, options={})
+      hash = self.calculate_affordability(down_payment, 0, annualincome: annual_income)
+      rounded = hash['affordabilityAmount'].to_i.round(-4) # round to nearist 10k
+      rounded < 10000 ? 10000 : rounded
     end
   end
 end
