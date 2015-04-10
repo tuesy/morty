@@ -33,5 +33,6 @@ group :development, :test do
   gem 'factory_girl_rails', "~> 4.0"
   gem 'database_cleaner'
   gem 'cucumber-rails-training-wheels', require: false
+  gem 'cucumber-api-steps', :require => false
 end
 
