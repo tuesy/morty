@@ -13,7 +13,7 @@ gem 'haml-rails'
 gem 'thin'
 gem 'pg'
 gem 'newrelic_rpm'
-gem 'rubillow'
+gem 'faraday'
 
 group :production do
   gem 'rails_12factor'
